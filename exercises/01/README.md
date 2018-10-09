@@ -5,7 +5,7 @@
 --------
 
 * [PDF](slides/slides.pdf)
-* [Код от слайдовете](snippets.scm)
+* [Код от слайдовете](slides/snippets.scm)
 
 Задачи
 ------
