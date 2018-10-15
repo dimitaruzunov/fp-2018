@@ -1,5 +1,19 @@
 (require rackunit rackunit/text-ui)
 
+(define (count-digits n)
+  (if (< n 10)
+      1
+      (+ 1 (count-digits (quotient n 10)))))
+
+(define (count-digits-iter n)
+  (define (iter count n)
+    (if (< n 10)
+        count
+        (iter (+ 1 count)
+              (quotient n 10))))
+
+  (iter 1 n))
+
 (define count-digits-tests
   (test-suite
    "Tests for count-digits"

@@ -1,5 +1,20 @@
 (require rackunit rackunit/text-ui)
 
+(define (sum-digits n)
+  (if (= n 0)
+      0
+      (+ (remainder n 10)
+         (sum-digits (quotient n 10)))))
+
+(define (sum-digits-iter n)
+  (define (iter sum n)
+    (if (= n 0)
+        sum
+        (iter (+ (remainder n 10) sum)
+              (quotient n 10))))
+
+  (iter 0 n))
+
 (define sum-digits-tests
   (test-suite
    "Tests for sum-digits"
