@@ -4,6 +4,7 @@
   (test-suite
    "Tests for count-digits"
 
+   (check = (count-digits 0) 1)
    (check = (count-digits 3) 1)
    (check = (count-digits 12) 2)
    (check = (count-digits 42) 2)
@@ -18,6 +19,7 @@
   (test-suite
    "Tests for count-digits-iter"
 
+   (check = (count-digits-iter 0) 1)
    (check = (count-digits-iter 3) 1)
    (check = (count-digits-iter 12) 2)
    (check = (count-digits-iter 42) 2)
