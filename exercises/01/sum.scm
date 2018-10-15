@@ -1,5 +1,10 @@
 (require rackunit rackunit/text-ui)
 
+(define (sum start end)
+  (if (> start end)
+      0
+      (+ start (sum (+ start 1) end))))
+
 (define sum-tests
   (test-suite
    "Tests for sum"

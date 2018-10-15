@@ -1,5 +1,10 @@
 (require rackunit rackunit/text-ui)
 
+(define (expt x n)
+  (cond ((= 0 n) 1)
+        ((< 0 n) (/ 1 (expt x (- n))))
+        (else (* x (expt x (- n 1))))))
+
 (define expt-tests
   (test-suite
    "Tests for expt"

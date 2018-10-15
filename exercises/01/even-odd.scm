@@ -1,5 +1,11 @@
 (require rackunit rackunit/text-ui)
 
+(define (even? n)
+  (= (remainder n 2) 0))
+
+(define (odd? n)
+  (not (even? n)))
+
 (define even?-odd?-tests
   (test-suite
    "Tests for even? and odd?"

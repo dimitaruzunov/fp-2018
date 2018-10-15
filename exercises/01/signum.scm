@@ -1,5 +1,10 @@
 (require rackunit rackunit/text-ui)
 
+(define (signum x)
+  (cond ((< x 0) -1)
+        ((> x 0) 1)
+        (else 0)))
+
 (define signum-tests
   (test-suite
    "Tests for signum"

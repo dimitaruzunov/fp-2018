@@ -1,5 +1,10 @@
 (require rackunit rackunit/text-ui)
 
+(define (factorial n)
+  (if (= n 0)
+      1
+      (* n (factorial (- n 1)))))
+
 (define factorial-tests
   (test-suite
    "Tests for factorial"
