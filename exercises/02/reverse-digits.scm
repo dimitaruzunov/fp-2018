@@ -4,6 +4,7 @@
   (test-suite
    "Tests for reverse-digits"
 
+   (check = (reverse-digits 0) 0)
    (check = (reverse-digits 3) 3)
    (check = (reverse-digits 12) 21)
    (check = (reverse-digits 42) 24)
@@ -20,6 +21,7 @@
   (test-suite
    "Tests for reverse-digits-iter"
 
+   (check = (reverse-digits-iter 0) 0)
    (check = (reverse-digits-iter 3) 3)
    (check = (reverse-digits-iter 12) 21)
    (check = (reverse-digits-iter 42) 24)
