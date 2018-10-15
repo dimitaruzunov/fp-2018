@@ -4,6 +4,7 @@
   (test-suite
    "Tests for sum-divisors"
 
+   (check = (sum-divisors 1) 1) ; 1
    (check = (sum-divisors 3) 4) ; 1 3
    (check = (sum-divisors 12) 28) ; 1 2 3 4 6 12
    (check = (sum-divisors 15) 24) ; 1 3 5 15
@@ -21,6 +22,7 @@
   (test-suite
    "Tests for sum-divisors-iter"
 
+   (check = (sum-divisors-iter 1) 1) ; 1
    (check = (sum-divisors-iter 3) 4) ; 1 3
    (check = (sum-divisors-iter 12) 28) ; 1 2 3 4 6 12
    (check = (sum-divisors-iter 15) 24) ; 1 3 5 15

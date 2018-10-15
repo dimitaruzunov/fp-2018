@@ -4,6 +4,7 @@
   (test-suite
    "Tests for count-divisors"
 
+   (check = (count-divisors 1) 1) ; 1
    (check = (count-divisors 3) 2) ; 1 3
    (check = (count-divisors 12) 6) ; 1 2 3 4 6 12
    (check = (count-divisors 15) 4) ; 1 3 5 15
@@ -21,6 +22,7 @@
   (test-suite
    "Tests for count-divisors-iter"
 
+   (check = (count-divisors-iter 1) 1) ; 1
    (check = (count-divisors-iter 3) 2) ; 1 3
    (check = (count-divisors-iter 12) 6) ; 1 2 3 4 6 12
    (check = (count-divisors-iter 15) 4) ; 1 3 5 15
