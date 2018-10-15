@@ -11,6 +11,7 @@
    (check-true (prime? 2221))
    (check-true (prime? 7879))
 
+   (check-false (prime? 1))
    (check-false (prime? 12))
    (check-false (prime? 15))
    (check-false (prime? 42))
