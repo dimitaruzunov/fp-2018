@@ -1,5 +1,8 @@
 (require rackunit rackunit/text-ui)
 
+(define (add x y)
+  (+ x y))
+
 (define add-tests
   (test-suite
    "Tests for add"

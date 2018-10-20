@@ -1,5 +1,14 @@
 (require rackunit rackunit/text-ui)
 
+(define (square x)
+  (* x x))
+
+(define (fast-expt x n)
+  (cond ((= n 0) 1)
+        ((< n 0) (/ 1 (fast-expt x (- n))))
+        ((even? n) (square (fast-expt x (/ n 2))))
+        (else (* x (fast-expt x (- n 1))))))
+
 (define fast-expt-tests
   (test-suite
    "Tests for fast-expt"
