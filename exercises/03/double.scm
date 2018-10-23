@@ -10,11 +10,11 @@
   (test-suite
    "Tests for double"
 
-    (check = ((double 1+) 0) 2)
-    (check = ((double square) 2) 16)
-    (check = ((double (double 1+)) 0) 4)
-    (check = (((double double) 1+) 0) 4)
-    (check = (((double (double double)) 1+) 0) 16)
-    (check = (((double (double double)) 1+) 5) 21)))
+   (check = ((double 1+) 0) 2)
+   (check = ((double square) 2) 16)
+   (check = ((double (double 1+)) 0) 4)
+   (check = (((double double) 1+) 0) 4)
+   (check = (((double (double double)) 1+) 0) 16)
+   (check = (((double (double double)) 1+) 5) 21)))
 
 (run-tests double-tests)
