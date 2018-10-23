@@ -1,10 +1,7 @@
 (require rackunit rackunit/text-ui)
 
-(define (1+ x)
-  (+ x 1))
-
-(define (square x)
-  (* x x))
+(define (1+ x) (+ x 1))
+(define (square x) (* x x))
 
 (define double-tests
   (test-suite

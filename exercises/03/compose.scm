@@ -1,13 +1,8 @@
 (require rackunit rackunit/text-ui)
 
-(define (identity x)
-  x)
-
-(define (1+ x)
-  (+ x 1))
-
-(define (square x)
-  (* x x))
+(define (identity x) x)
+(define (1+ x) (+ x 1))
+(define (square x) (* x x))
 
 (define compose-tests
   (test-suite

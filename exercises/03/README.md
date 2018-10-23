@@ -41,11 +41,8 @@
 стойност на `a`. Пример:
 
    ```scheme
-   (define (identity x)
-     x)
-
-   (define (2+ x)
-     (+ x 2))
+   (define (identity x) x)
+   (define (2+ x) (+ x 2))
 
    (sum identity 1 2+ 5) ; 9
    (product identity 1 2+ 5) ; 15
@@ -71,9 +68,7 @@
 `f` е едноаргументна процедура. Пример:
 
    ```scheme
-   (define (1+ x)
-     (+ x 1))
-
+   (define (1+ x) (+ x 1))
    (define 2+ (double 1+))
 
    (2+ 40) ; 42
@@ -84,11 +79,8 @@ x ↦ f(g(x)). Напишете процедура `(compose f g)`, която �
 `g`. Пример:
 
     ```scheme
-    (define (1+ x)
-      (+ x 1))
-
-    (define (square x)
-      (* x x))
+    (define (1+ x) (+ x 1))
+    (define (square x) (* x x))
 
     ((compose square 1+) 6) ; 49
     ```
@@ -105,8 +97,7 @@ x ↦ f(g(x)). Напишете процедура `(compose f g)`, която �
 Пример:
 
     ```scheme
-    (define (square x)
-      (* x x))
+    (define (square x) (* x x))
 
     ((repeated square 2) 5) ; 625
     ```
