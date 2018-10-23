@@ -74,7 +74,7 @@
    (define (1+ x)
      (+ x 1))
 
-   (define 2+ (double inc))
+   (define 2+ (double 1+))
 
    (2+ 40) ; 42
    ```
