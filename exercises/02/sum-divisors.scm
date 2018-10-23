@@ -1,5 +1,26 @@
 (require rackunit rackunit/text-ui)
 
+(define (divides? k n)
+  (= (remainder n k) 0))
+
+(define (sum-divisors n)
+  (define (divisors-up-to k)
+    (cond ((= k 0) 0)
+          ((divides? k n)
+           (+ k (divisors-up-to (- k 1))))
+          (else (divisors-up-to (- k 1)))))
+
+  (divisors-up-to n))
+
+(define (sum-divisors-iter n)
+  (define (iter sum k)
+    (cond ((> k n) sum)
+          ((divides? k n)
+           (iter (+ k sum) (+ k 1)))
+          (else (iter sum (+ k 1)))))
+
+  (iter 1 2))
+
 (define sum-divisors-tests
   (test-suite
    "Tests for sum-divisors"

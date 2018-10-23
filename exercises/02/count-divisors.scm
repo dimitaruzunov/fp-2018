@@ -1,5 +1,26 @@
 (require rackunit rackunit/text-ui)
 
+(define (divides? k n)
+  (= (remainder n k) 0))
+
+(define (count-divisors n)
+  (define (divisors-up-to k)
+    (cond ((= k 0) 0)
+          ((divides? k n)
+           (+ 1 (divisors-up-to (- k 1))))
+          (else (divisors-up-to (- k 1)))))
+
+  (divisors-up-to n))
+
+(define (count-divisors-iter n)
+  (define (iter count k)
+    (cond ((> k n) count)
+          ((divides? k n)
+           (iter (+ 1 count) (+ k 1)))
+          (else (iter count (+ k 1)))))
+
+  (iter 1 2))
+
 (define count-divisors-tests
   (test-suite
    "Tests for count-divisors"

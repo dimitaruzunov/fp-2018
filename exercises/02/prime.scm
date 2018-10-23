@@ -1,5 +1,20 @@
 (require rackunit rackunit/text-ui)
 
+(define (prime? n)
+  (define (count-divisors n)
+    (define (divides? k n)
+      (= (remainder n k) 0))
+
+    (define (divisors-up-to k)
+      (cond ((= k 0) 0)
+            ((divides? k n)
+             (+ 1 (divisors-up-to (- k 1))))
+            (else (divisors-up-to (- k 1)))))
+
+    (divisors-up-to n))
+
+  (= (count-divisors n) 2))
+
 (define prime?-tests
   (test-suite
    "Tests for prime?"

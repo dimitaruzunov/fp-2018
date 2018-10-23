@@ -1,5 +1,16 @@
 (require rackunit rackunit/text-ui)
 
+(define (expt-iter x n)
+  (define (iter product counter)
+    (if (> counter n)
+        product
+        (iter (* x product)
+              (+ counter 1))))
+
+  (if (< n 0)
+      (/ 1 (expt-iter x (- n)))
+      (iter 1 1)))
+
 (define expt-iter-tests
   (test-suite
    "Tests for expt-iter"

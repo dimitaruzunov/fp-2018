@@ -1,5 +1,23 @@
 (require rackunit rackunit/text-ui)
 
+(define (square x)
+  (* x x))
+
+(define (fast-expt-iter x n)
+  (define (iter product base exponent)
+    (cond ((= exponent 0) product)
+          ((even? exponent)
+           (iter product
+                 (square base)
+                 (/ exponent 2)))
+          (else (iter (* base product)
+                      base
+                      (- exponent 1)))))
+
+  (if (< n 0)
+      (/ 1 (fast-expt-iter x (- n)))
+      (iter 1 x n)))
+
 (define fast-expt-iter-tests
   (test-suite
    "Tests for fast-expt-iter"
