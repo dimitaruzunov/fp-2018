@@ -1,5 +1,27 @@
 (require rackunit rackunit/text-ui)
 
+(define (f n)
+  (if (< n 3)
+      n
+      (+ (f (- n 1))
+         (* 2
+            (f (- n 2)))
+         (* 3
+            (f (- n 3))))))
+
+(define (f-iter n)
+  (define (iter current next after-next counter)
+    (if (= counter n)
+        current
+        (iter next
+              after-next
+              (+ after-next
+                 (* 2 next)
+                 (* 3 current))
+              (+ counter 1))))
+
+  (iter 0 1 2 0))
+
 (define f-tests
   (test-suite
    "Tests for f"

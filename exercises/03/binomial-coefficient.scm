@@ -1,5 +1,12 @@
 (require rackunit rackunit/text-ui)
 
+(define (binomial-coefficient row index)
+  (if (or (= index 1)
+          (= index row))
+      1
+      (+ (binomial-coefficient (- row 1) (- index 1))
+         (binomial-coefficient (- row 1) index))))
+
 (define binomial-coefficient-tests
   (test-suite
    "Tests for binomial-coefficient"

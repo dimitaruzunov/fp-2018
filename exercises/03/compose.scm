@@ -1,5 +1,9 @@
 (require rackunit rackunit/text-ui)
 
+(define (compose f g)
+  (lambda (x)
+    (f (g x))))
+
 (define (identity x) x)
 (define (1+ x) (+ x 1))
 (define (square x) (* x x))
