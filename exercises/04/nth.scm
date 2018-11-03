@@ -1,5 +1,10 @@
 (require rackunit rackunit/text-ui)
 
+(define (nth l n)
+  (if (= n 0)
+      (car l)
+      (nth (cdr l) (- n 1))))
+
 (define nth-tests
   (test-suite
    "Tests for nth"

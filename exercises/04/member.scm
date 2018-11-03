@@ -1,5 +1,10 @@
 (require rackunit rackunit/text-ui)
 
+(define (member? x l)
+  (and (not (null? l))
+       (or (equal? (car l) x)
+           (member? x (cdr l)))))
+
 (define member?-tests
   (test-suite
    "Tests for member?"

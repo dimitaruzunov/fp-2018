@@ -1,5 +1,23 @@
 (require rackunit rackunit/text-ui)
 
+(define (accumulate combiner null-value term l)
+  (if (null? l)
+      null-value
+      (combiner (term (car l))
+                (accumulate combiner null-value term (cdr l)))))
+
+(define (map f l)
+  (accumulate cons '() f l))
+
+(define (filter p l)
+  (accumulate (lambda (current acc)
+                (if (p current)
+                    (cons current acc)
+                    acc))
+              '()
+              (lambda (x) x)
+              l))
+
 (define (identity x) x)
 (define (1+ x) (+ x 1))
 (define (square x) (* x x))

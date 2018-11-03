@@ -1,5 +1,11 @@
 (require rackunit rackunit/text-ui)
 
+(define (map f l)
+  (if (null? l)
+      '()
+      (cons (f (car l))
+            (map f (cdr l)))))
+
 (define (identity x) x)
 (define (1+ x) (+ x 1))
 (define (square x) (* x x))

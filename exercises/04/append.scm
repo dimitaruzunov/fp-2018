@@ -1,5 +1,11 @@
 (require rackunit rackunit/text-ui)
 
+(define (append l1 l2)
+  (if (null? l1)
+      l2
+      (cons (car l1)
+            (append (cdr l1) l2))))
+
 (define append-tests
   (test-suite
    "Tests for append"

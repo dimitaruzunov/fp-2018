@@ -1,5 +1,8 @@
 (require rackunit rackunit/text-ui)
 
+(define (reject p l)
+  (filter (compose not p) l))
+
 (define reject-tests
   (test-suite
    "Tests for reject"
