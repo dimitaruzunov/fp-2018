@@ -1,5 +1,43 @@
 (require rackunit rackunit/text-ui)
 
+(define (selection-sort l)
+  (define (minimum l)
+    (define (min a b)
+      (if (< b a) b a))
+
+    (if (null? (cdr l))
+        (car l)
+        (min (car l)
+             (minimum (cdr l)))))
+
+  (define (remove x l)
+    (define (take-while p l)
+      (if (or (null? l)
+              (not (p (car l))))
+          '()
+          (cons (car l)
+                (take-while p (cdr l)))))
+
+    (define (drop-while p l)
+      (if (or (null? l)
+              (not (p (car l))))
+          l
+          (drop-while p (cdr l))))
+
+    (define (!=x y)
+      (not (= y x)))
+
+    (if (not (member x l))
+        l
+        (append (take-while !=x l)
+                (cdr (drop-while !=x l)))))
+
+  (if (null? l)
+      '()
+      (let ((min-in-l (minimum l)))
+        (cons min-in-l
+              (selection-sort (remove min-in-l l))))))
+
 (define selection-sort-tests
   (test-suite
    "Tests for selection-sort"

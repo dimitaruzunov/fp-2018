@@ -1,5 +1,21 @@
 (require rackunit rackunit/text-ui)
 
+(define (meet-twice? f g a b)
+  (define (exists? p a b)
+    (and (<= a b)
+         (or (p a)
+             (exists? p (+ a 1) b))))
+
+  (exists? (lambda (x)
+             (exists? (lambda (y)
+                        (and (not (= x y))
+                             (= (f x) (g x))
+                             (= (f y) (g y))))
+                      a
+                      b))
+           a
+           b))
+
 (define meet-twice?-tests
   (test-suite
    "Tests for meet-twice?"
