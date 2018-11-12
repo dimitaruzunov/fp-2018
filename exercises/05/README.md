@@ -35,8 +35,8 @@
 такива, че f(x) = g(x) и f(y) = g(y). Примери:
 
    ```scheme
-   (meet-twice? (lambda (x) x) (lambda (x) (- x)) -3 1) -> #f
-   (meet-twice? (lambda (x) x) sqrt 0 5) -> #t
+   (meet-twice? (lambda (x) x) (lambda (x) (- x)) -3 1) ; -> #f
+   (meet-twice? (lambda (x) x) sqrt 0 5) ; -> #t
    ```
 
 4. Казваме, че списъкът `x` = (x<sub>1</sub> x<sub>2</sub> … x<sub>2n</sub>) от
