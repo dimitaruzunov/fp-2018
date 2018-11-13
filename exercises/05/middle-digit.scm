@@ -1,18 +1,18 @@
 (require rackunit rackunit/text-ui)
 
+(define (last-digit n)
+  (remainder n 10))
+
+(define (without-last-digit n)
+  (quotient n 10))
+
+(define (count-digits n)
+  (if (< n 10)
+      1
+      (+ 1
+         (count-digits (without-last-digit n)))))
+
 (define (middle-digit n)
-  (define (last-digit n)
-    (remainder n 10))
-
-  (define (without-last-digit n)
-    (quotient n 10))
-
-  (define (count-digits n)
-    (if (< n 10)
-        1
-        (+ 1
-           (count-digits (without-last-digit n)))))
-
   (define (kth-digit-from-last k n)
     (if (= k 0)
         (last-digit n)

@@ -1,20 +1,26 @@
 (require rackunit rackunit/text-ui)
 
-(define (meet-twice? f g a b)
-  (define (exists? p a b)
-    (and (<= a b)
-         (or (p a)
-             (exists? p (+ a 1) b))))
+(define (enumerate-interval from to)
+  (if (> from to)
+      '()
+      (cons from
+            (enumerate-interval (+ from 1) to))))
 
-  (exists? (lambda (x)
-             (exists? (lambda (y)
-                        (and (not (= x y))
-                             (= (f x) (g x))
-                             (= (f y) (g y))))
-                      a
-                      b))
-           a
-           b))
+(define (any? p l)
+  (and (not (null? l))
+       (or (p (car l))
+           (any? p (cdr l)))))
+
+(define (meet-twice? f g a b)
+  (define interval (enumerate-interval a b))
+
+  (any? (lambda (x)
+          (any? (lambda (y)
+                  (and (not (= x y))
+                       (= (f x) (g x))
+                       (= (f y) (g y))))
+                interval))
+        interval))
 
 (define meet-twice?-tests
   (test-suite

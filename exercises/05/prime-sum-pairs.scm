@@ -1,10 +1,10 @@
 (require rackunit rackunit/text-ui)
 
-(define (enumerate-interval a b)
-  (if (< b a)
+(define (enumerate-interval from to)
+  (if (> from to)
       '()
-      (cons a
-            (enumerate-interval (+ a 1) b))))
+      (cons from
+            (enumerate-interval (+ from 1) to))))
 
 (define (flatmap f l)
   (foldr append '() (map f l)))
@@ -31,12 +31,14 @@
   (define (make-pair-sum pair)
     (list (car pair) (cadr pair) (+ (car pair) (cadr pair))))
 
+  (define pairs
+    (flatmap (lambda (i)
+               (map (lambda (j) (list i j))
+                    (enumerate-interval 1 (- i 1))))
+             (enumerate-interval 1 n)))
+
   (map make-pair-sum
-       (filter prime-sum?
-               (flatmap (lambda (i)
-                          (map (lambda (j) (list i j))
-                               (enumerate-interval 1 (- i 1))))
-                        (enumerate-interval 1 n)))))
+       (filter prime-sum? pairs)))
 
 (define prime-sum-pairs-tests
   (test-suite

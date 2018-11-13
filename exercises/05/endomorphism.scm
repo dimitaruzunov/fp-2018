@@ -1,20 +1,19 @@
 (require rackunit rackunit/text-ui)
 
-(define (endomorphism? l op f)
-  (define (every? p l)
-    (foldl (lambda (x acc)
-             (and x acc))
-           #t
-           (map p l)))
+(define (every? p l)
+  (or (null? l)
+      (and (p (car l))
+           (every? p (cdr l)))))
 
-  (define (is-in-l? x)
-    (member x l))
+(define (endomorphism? l op f)
+  (define (is-image-in-l? x)
+    (member (f x) l))
 
   (define (f-preserves-op? x y)
     (= (+ (f x) (f y))
        (f (+ x y))))
 
-  (and (every? is-in-l? (map f l))
+  (and (every? is-image-in-l? l)
        (every? (lambda (x)
                  (every? (lambda (y)
                            (f-preserves-op? x y))
