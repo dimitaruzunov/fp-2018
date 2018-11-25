@@ -17,7 +17,7 @@
        (enumerate-interval 1 (get-columns matrix))))
 
 ; Или по-кратко:
-(define (transapose matrix)
+(define (transpose matrix)
   (apply map list matrix))
 
 (define transpose-tests
