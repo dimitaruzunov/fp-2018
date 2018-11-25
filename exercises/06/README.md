@@ -119,7 +119,7 @@ y<sub>n</sub>)), където x<sub>i</sub> и y<sub>i</sub> са съответ
 във всяка колона в матрицата `matrix` има просто число.
 
    ```scheme
-   (prime-in-each-column? '((2 2 3) (4 5 6))) ; -> #f
+   (prime-in-each-column? '((1 2 3) (4 5 6) (42 8 9))) ; -> #f
    (prime-in-each-column? '((17 2 16) (4 5 3))) ; -> #t
    ```
 
